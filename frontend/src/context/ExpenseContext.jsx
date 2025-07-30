@@ -100,8 +100,8 @@ export const ExpenseProvider = ({ children }) => {
   // Budget actions
   const fetchBudget = async (month, year, token) => {
     try {
-      const { getBudget } = await import('../services/budgetApi')
-      const budget = await getBudget(month, year, token)
+      const { budgetAPI } = await import('../services/api')
+      const budget = await budgetAPI.getBudget(month, year, token)
       dispatch({ type: "SET_BUDGET", payload: budget })
     } catch (error) {
       dispatch({ type: "SET_ERROR", payload: error.response?.data?.message || "Failed to fetch budget" })
@@ -110,8 +110,8 @@ export const ExpenseProvider = ({ children }) => {
 
   const setBudget = async (month, year, amount, token) => {
     try {
-      const { setBudget } = await import('../services/budgetApi')
-      const budget = await setBudget(month, year, amount, token)
+      const { budgetAPI } = await import('../services/api')
+      const budget = await budgetAPI.setBudget(month, year, amount, token)
       dispatch({ type: "SET_BUDGET", payload: budget })
       return { success: true }
     } catch (error) {
