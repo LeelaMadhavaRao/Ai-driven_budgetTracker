@@ -22,15 +22,16 @@ const ExpenseForm = () => {
   const navigate = useNavigate();
 
   const categories = [
-    "food",
-    "transportation",
-    "entertainment",
-    "utilities",
-    "healthcare",
-    "shopping",
-    "education",
-    "Accommodation",
-    "other",
+        "food",
+        "transportation",
+        "accommodation",
+        "electricity",
+        "education",
+        "groceries",
+        "healthcare",
+        "shopping",
+        "entertainment",
+        "other"
   ];
 
   const currencies = ["USD", "EUR", "GBP", "JPY", "CAD", "AUD", "INR", "CNY"];

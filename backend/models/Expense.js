@@ -18,14 +18,13 @@ const expenseSchema = new mongoose.Schema(
       enum: [
         "food",
         "transportation",
-        "accomodation",
-        "Accommodation",
+        "accommodation",
         "electricity",
         "education",
         "groceries",
         "healthcare",
         "shopping",
-        "Entertainment",
+        "entertainment",
         "other"
       ],
     },
