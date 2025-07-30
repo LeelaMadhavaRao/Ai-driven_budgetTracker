@@ -19,7 +19,12 @@ connectDB()
 
 // Middleware
 app.use(cors({
-  origin: ["http://localhost:3000", "https://ai-driven-budget-tracker.vercel.app"],
+  origin: [
+    "http://localhost:3000",
+    "https://ai-driven-budget-tracker.vercel.app",
+    "https://ai-driven-budget-tracker-j8pw.vercel.app",
+    "https://ai-driven-budget-tracker-uvij.vercel.app"
+  ],
   credentials: true
 }))
 app.use(express.json())
