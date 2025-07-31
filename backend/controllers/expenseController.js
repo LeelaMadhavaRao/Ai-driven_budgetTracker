@@ -86,6 +86,7 @@ const getAIBudgetSuggestion = async (expenses, totalBudget, userId) => {
 
     suggestionCache.set(cacheKey, suggestion);
     setTimeout(() => suggestionCache.delete(cacheKey), 60 * 60 * 1000); // Expire after 1 hour
+    console.log("AI suggestion generated:", suggestion);
     return suggestion;
   } catch (error) {
     console.error("AI suggestion error:", {
@@ -171,21 +172,6 @@ const createExpense = async (req, res) => {
         code: aiError.code,
         stack: aiError.stack,
       });
-      const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000);
-      const fallbackSuggestion = await Expense.findOne({
-        userId: req.userId,
-        budgetSuggestions: { $ne: "" },
-        createdAt: { $lt: oneHourAgo },
-      })
-        .sort({ createdAt: -1 })
-        .select("budgetSuggestions");
-      suggestion = fallbackSuggestion?.budgetSuggestions || "Unable to generate AI suggestions at this time. Please try again later.";
-    }
-
-    // Validate suggestion contains current categories
-    const categories = Object.keys(categoryTotals);
-    if (suggestion && !categories.every((cat) => suggestion.includes(cat))) {
-      suggestion = "-Unable to generate AI suggestions at this time. Please try again later.";
     }
 
     expense.budgetSuggestions = suggestion;
