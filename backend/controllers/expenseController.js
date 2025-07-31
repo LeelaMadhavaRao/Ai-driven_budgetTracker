@@ -179,13 +179,13 @@ const createExpense = async (req, res) => {
       })
         .sort({ createdAt: -1 })
         .select("budgetSuggestions");
-      suggestion = fallbackSuggestion?.budgetSuggestions || "- Track expenses daily to identify savings opportunities.\n- Prioritize needs over wants to stay within budget.\n- Review subscriptions for potential cancellations.";
+      suggestion = fallbackSuggestion?.budgetSuggestions || "Unable to generate AI suggestions at this time. Please try again later.";
     }
 
     // Validate suggestion contains current categories
     const categories = Object.keys(categoryTotals);
     if (suggestion && !categories.every((cat) => suggestion.includes(cat))) {
-      suggestion = "- Track expenses daily to identify savings opportunities.\n- Prioritize needs over wants to stay within budget.\n- Review subscriptions for potential cancellations.";
+      suggestion = "-Unable to generate AI suggestions at this time. Please try again later.";
     }
 
     expense.budgetSuggestions = suggestion;
