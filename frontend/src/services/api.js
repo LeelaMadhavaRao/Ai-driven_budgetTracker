@@ -1,7 +1,7 @@
 
 import axios from "axios";
 
-const API_BASE_URL = "https://ai-driven-budget-tracker.vercel.app/api/";
+const API_BASE_URL = "https://ai-driven-budget-trackerbackend.vercel.app/api/";
 
 // Create axios instance
 const api = axios.create({
