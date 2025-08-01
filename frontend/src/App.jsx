@@ -13,6 +13,7 @@ import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 import { ExpenseProvider } from "./context/ExpenseContext";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <AuthProvider>
         <ExpenseProvider>
           <Navbar />
+          <Toaster position="top-right" reverseOrder={false} />
           <Routes>
             <Route path="/" element={<HomeCover />} />
             <Route path="/login" element={<Login />} />
